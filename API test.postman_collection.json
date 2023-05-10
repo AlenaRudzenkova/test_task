@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "5395933e-14ca-4882-9540-503b1bde0209",
+		"name": "API test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Profile information",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxOEVBODFFOTQzMkExNDdCQTdDMzdBMzgxMzFBNDc0ODRCMUUwNDciLCJ0eXAiOiJKV1QiLCJ4NXQiOiJJWTZvSHBReW9VZTZmRGVqZ1RHa2RJU3g0RWMifQ.eyJuYmYiOjE2ODM3MTE3NzEsImV4cCI6MTY4MzcxMjY3MSwiaXNzIjoiaHR0cHM6Ly9zc28tc3RnLnRyYW5zcGVyZmVjdC5jb20iLCJhdWQiOlsiaHR0cHM6Ly9zc28tc3RnLnRyYW5zcGVyZmVjdC5jb20vcmVzb3VyY2VzIiwiVHJhbnNQb3J0IiwiQ2FyRlNBcGkiXSwiY2xpZW50X2lkIjoiblV1TmZQQmdCS3NYY3JmRFdwdWtTU1pKeHl0a1RVNFIiLCJzdWIiOiJRQVRlc3ROWUB0cmFuc3BlcmZlY3RtYWlsLmNvbSIsImF1dGhfdGltZSI6MTY4MzcxMTc2NiwiaWRwIjoiVHJhbnNQZXJmZWN0QXV0aCIsImlkIjoiNmY0YjBkZWMtMDA4OC00MjU1LTkwYzMtMjI5MmRlZTFhZjNjIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsImVtYWlsIiwiY2xpZW50cyIsInVzZXJuYW1lIiwiZGlyZWN0b3J5IiwiVHJhbnNQb3J0IiwiQ2FyRlNBcGkiXSwiYW1yIjpbImV4dGVybmFsIl19.YpWukKiO7GBq8ne01h_ocix8otDROWz7sKs_98xN8tNeJEyciHw4l5vqH28XZ7s53f2ftCrmv-nR_1qSm-o31OARQ1cFZNzg7-wcI-kNJMVAu8JMuKlSJORz0yeVi4V452fQMW3rWLlYjTW200hFvRPs2yNFnU4H-TCj52wSstKmhromVhzILIi80w-cKOca-RH0Jm8RYIMkI5cNhh7a8hlPwstRhrO3zsUbU43Us_xKNYiIYIMq6PkjcUaPX8UGGN9Q7lF6B7LQBZmBRoEh4dstkr-bcVysDTpXQqBLJ5oVv1iKjiY9v0O-Z-CmePXetlZzAwlr8gmt3jy4YKHaDYWvWb6K3GzCG751AlmvoAoJURszLHZ4ziOTz_It7REctn8MwLwTt6rMoYqkD6AZgRy6hTIYWCZxEolty079KflXgdiK511peOAMcHg9BaaBEDYkwOhUV8oVX6nI-oEBiMs-__QIBwYBuYo6uN5y1WwHnN2IrNDtdgbcWTcUwaUkPqhe7Pt_T02q6AiXB_8xzGpCAhQpCbFiTgpQt7gYuR-oQdHwoeA6WdT8OSxvTS00AZ_BSPnaz4T700F_aIIws1zeeY3EQpZZHitDN41nnD0KWBIqkzO6igk4lPae1gKdB-3okTp3w3LycajFYBPjnUVObnG6drfisgfJc9kOhA8';\r",
+							"pm.environment.set('ACCESS_TOKEN', token);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify user name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.username).to.eql(\"QATestNY@transperfectmail.com\");\r",
+							"   pm.expect(jsonData.firstName).to.eql(\"NY\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify first name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"   pm.expect(jsonData.firstName).to.eql(\"NY\");\r",
+							"  //  pm.expect(jsonData.lastName).to.eql(\"TestUser\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify last name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.lastName).to.eql(\"TestUser\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify contact address\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.contactAddress).to.eql(\"31 Court St\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify contact city\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.contactCity).to.eql(\"Brooklyn\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify contact country\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.contactCountry).to.eql(\"US\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify contact work phone\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.contactWorkPhone).to.eql(\"7181111111\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://stg-transport.transperfect.com/api/profile",
+					"protocol": "https",
+					"host": [
+						"stg-transport",
+						"transperfect",
+						"com"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
